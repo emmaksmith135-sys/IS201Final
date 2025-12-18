@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Cat and Mouse</title>
+  <style>
+    * {
+      box-sizing: border-box
+    }
+
+    body {
+      margin: 0;
+      background: linear-gradient(#f4d6a0, #e3b778);
+      font-family: "Courier New", monospace;
+      color: #3b2f2f;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    h1 {
+      margin: 12px 0 6px;
+      letter-spacing: 4px
+    }
+
+    #hud {
+      display: flex;
+      gap: 12px;
+      margin: 6px 0;
+      font-size: 18px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    #buttons {
+      display: flex;
+      gap: 12px;
+      margin-top: 6px;
+    }
+
+    button {
+      padding: 6px 12px;
+      font-size: 16px;
+      cursor: pointer;
+      border: none;
+      background: #c94c4c;
+      color: #fff;
+      border-radius: 6px;
+      box-shadow: 2px 2px 0 #3b2f2f;
+      transition: 0.2s;
+    }
+
+    button:hover {
+      background: #e57373;
+    }
+
+    canvas {
+      border: 6px solid #3b2f2f;
+      box-shadow: 10px 10px 0 #3b2f2f;
+      background: #f7e7c1;
+      margin-bottom: 6px;
+      position: relative;
+    }
+
+    .scanlines::after {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background: repeating-linear-gradient(to bottom,
+          rgba(0, 0, 0, 0.05),
+          rgba(0, 0, 0, 0.05) 1px,
+          transparent 1px,
+          transparent 3px);
+    }
+
+    #scoreBox,
+    #highScoreBox {
+      position: absolute;
+      background: rgba(255, 255, 255, 0.7);
+      padding: 4px 8px;
+      border: 2px solid #3b2f2f;
+      border-radius: 4px;
+      font-weight: bold;
+    }
+
+    #scoreBox {
+      top: -40px;
+      left: 0;
+    }
+
+    #highScoreBox {
+      bottom: -40px;
+      left: 0;
+    }
+  </style>
+</head>
+
+<!-- Nav bar similar to resume.html -->
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Centered Navbar Page</title>
+    <style>
+        /* ---------- Fonts ---------- */
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI",
+                         "Inter", "Source Sans Pro", Arial, sans-serif;
+            background-color: #ece9f2;
+            color: #2f2a36;
+            line-height: 1.7;
+            margin: 0;
+        }
+
+        /* ---------- Navbar ---------- */
+        .top-nav {
+            display: flex;
+            justify-content: center; /* center everything */
+            align-items: center;
+            gap: 40px;
+            padding: 18px 20px;
+            background-color: #d8d0e6;
+            border-bottom: 2px solid #b9aecf;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 100;
+        }
+
+        .top-nav .site-title {
+            font-family: "Playfair Display", serif;
+            font-size: 1.6em;
+        }
+
+        .top-nav ul {
+            list-style: none;
+            display: flex;
+            gap: 30px;
+            margin: 0;
+        }
+
+        .top-nav ul li a {
+            text-decoration: none;
+            color: #3b3450;
+            font-weight: 500;
+            padding-bottom: 5px;
+        }
+
+        .top-nav ul li a:hover {
+            border-bottom: 2px solid #4e4472;
+        }
+
+        /* Menu button */
+        .menu-button {
+            background-color: #6f63a6;
+            color: #f7f5fb;
+            border: none;
+            padding: 10px 16px;
+            border-radius: 2px;
+            font-size: 1em;
+            cursor: pointer;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Inter", sans-serif;
+        }
+
+        .menu-button:hover {
+            background-color: #584a8b;
+        }
+
+        /* Dropdown menu */
+        .dropdown-menu {
+            position: absolute;
+            top: 60px;
+            background-color: #f7f5fb;
+            border-radius: 10px;
+            display: none;
+            width: 200px;
+            z-index: 1000;
+        }
+
+        .dropdown-menu a {
+            display: block;
+            padding: 12px 18px;
+            text-decoration: none;
+            color: #2f2a36;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Inter", sans-serif;
+        }
+
+        .dropdown-menu a:hover {
+            background-color: #e6e0f0;
+        }
+
+        /* ---------- Main content ---------- */
+        main {
+            max-width: 920px;
+            margin: 140px auto 0 auto; /* margin-top to clear navbar */
+            padding: 0 32px;
+        }
+    </style>
+
+    <script>
+        function toggleMenu() {
+            const menu = document.getElementById("dropdownMenu");
+            menu.style.display = menu.style.display === "block" ? "none" : "block";
+        }
+
+        // Close menu if clicking outside
+        document.addEventListener("click", function(event) {
+            const menu = document.getElementById("dropdownMenu");
+            const button = document.querySelector(".menu-button");
+            if (!menu.contains(event.target) && !button.contains(event.target)) {
+                menu.style.display = "none";
+            }
+        });
+    </script>
+</head>
+
+<body>
+
+    <nav class="top-nav">
+        <div class="site-title">Cat and Mouse Web App</div>
+        <button class="menu-button" onclick="toggleMenu()">Menu ▼</button>
+
+        <div class="dropdown-menu" id="dropdownMenu">
+            <a href="homepage.html">Homepage</a>        
+            <a href="resume.html">Resume</a>
+            <a href="chatGame.html">Cat and Mouse Web App</a>
+            <a href="scratch.html">Scratch Page</a>
+        </div>
+    </nav>
+
+
+</body>
+</html>
+
+
+
+<body class="scanlines">
+  <br><br><br>
+  <h1>CAT AND MOUSE</h1>
+  <div id="hud">
+    <div>Speed <input type="range" id="speed" min="2" max="12" value="6"></div>
+    <div>Cats <input type="range" id="catCount" min="1" max="4" value="4"></div>
+  </div>
+  <div style="position:relative;">
+    <canvas id="game"></canvas>
+    <div id="scoreBox">Score: <span id="score">0</span></div>
+    <div id="highScoreBox">High Score: <span id="highScore">0</span></div>
+  </div>
+  <div id="buttons">
+    <button id="startBtn">Start</button>
+    <button id="pauseBtn">Pause</button>
+    <button id="resetBtn">Reset</button>
+  </div>
+  <script>
+    const canvas = document.getElementById("game");
+    const ctx = canvas.getContext("2d");
+    const tile = 32;
+
+    // Layout with boxes in lines (previous version)
+    const house = [
+      "000000000000000000000000",
+      "D11111111111111111111110",
+      "010001111000111100011110",
+      "011111111111111111111110",
+      "010000111000111000011110",
+      "011111111111111111111110",
+      "010001111000111100011110",
+      "011111111111111111111110",
+      "000000000000000000000000"
+    ];
+
+    canvas.width = house[0].length * tile;
+    canvas.height = house.length * tile;
+
+    let speed = 6, frame = 0, score = 0, highScore = 0, powerMode = 0;
+    let gameOver = false, gameOverTimer = 0;
+    let victory = false, victoryTimer = 0;
+    let catCount = 4;
+    let started = false, paused = false;
+
+    document.getElementById("speed").addEventListener("input", e => speed = Number(e.target.value));
+    document.getElementById("catCount").addEventListener("input", e => { catCount = Number(e.target.value); resetGame(); });
+    document.getElementById("startBtn").addEventListener("click", () => { started = true; paused = false; });
+    document.getElementById("pauseBtn").addEventListener("click", () => { paused = !paused; });
+    document.getElementById("resetBtn").addEventListener("click", () => { resetGame(); });
+
+    const mouse = { x: 1, y: 1, dx: 1, dy: 0 };
+
+    let cats = [
+      { x: house[0].length - 2, y: 1, dx: -1, dy: 0 },
+      { x: house[0].length - 2, y: house.length - 2, dx: 0, dy: -1 },
+      { x: 1, y: house.length - 2, dx: 1, dy: 0 },
+      { x: Math.floor(house[0].length / 2), y: Math.floor(house.length / 2), dx: 0, dy: 1 }
+    ];
+
+    const crumbs = [], cheeses = [];
+
+    const sounds = {
+      crumb: new Audio("https://actions.google.com/sounds/v1/cartoon/wood_plank_flicks.ogg"),
+      cheese: new Audio("https://actions.google.com/sounds/v1/cartoon/pop.ogg"),
+      lose: new Audio("https://actions.google.com/sounds/v1/cartoon/clang_and_wobble.ogg"),
+      victory: new Audio("https://actions.google.com/sounds/v1/cartoon/clang.ogg")
+    };
+    function playSound(n) { if (sounds[n]) { sounds[n].currentTime = 0; sounds[n].play(); } }
+
+    function canMove(x, y) {
+      return y >= 0 && house[y] && (house[y][x] === "1" || house[y][x] === "D");
+    }
+
+    function initItems() {
+      crumbs.length = 0; cheeses.length = 0;
+      for (let y = 0; y < house.length; y++) {
+        for (let x = 0; x < house[y].length; x++) {
+          if (house[y][x] === "1") {
+            crumbs.push({ x, y });
+            if (Math.random() < 0.05) cheeses.push({ x, y });
+          }
+        }
+      }
+    }
+
+    function moveEntity(e) {
+      const nx = e.x + e.dx, ny = e.y + e.dy;
+      if (canMove(nx, ny)) { e.x = nx; e.y = ny; }
+    }
+
+    function drawHouse() {
+      for (let y = 0; y < house.length; y++) {
+        for (let x = 0; x < house[y].length; x++) {
+          if (house[y][x] === "0") {
+            ctx.fillStyle = "#8d6e63";
+            ctx.fillRect(x * tile, y * tile, tile, tile);
+            ctx.fillStyle = "#6d4c41";
+            ctx.fillRect(x * tile + 4, y * tile + 4, tile - 8, tile - 8);
+          }
+          if (house[y][x] === "D") {
+            ctx.fillStyle = "#5d4037";
+            ctx.fillRect(x * tile, y * tile, tile, tile);
+            ctx.fillStyle = "#d7ccc8";
+            ctx.fillRect(x * tile + 6, y * tile + 6, tile - 12, tile - 12);
+          }
+        }
+      }
+    }
+
+    function drawMouse() {
+      ctx.font = "22px serif";
+      ctx.textAlign = "center"; ctx.textBaseline = "middle";
+      ctx.fillText("🐭", mouse.x * tile + tile / 2, mouse.y * tile + tile / 2);
+    }
+
+    function drawCats() {
+      ctx.font = "22px serif";
+      ctx.textAlign = "center"; ctx.textBaseline = "middle";
+      cats.slice(0, catCount).forEach(c => ctx.fillText("🐱", c.x * tile + tile / 2, c.y * tile + tile / 2));
+    }
+
+    function drawCrumbs() {
+      crumbs.forEach(c => {
+        ctx.fillStyle = "#3b2f2f";
+        ctx.fillRect(c.x * tile + 14, c.y * tile + 14, 4, 4);
+      });
+    }
+
+    function drawCheese() {
+      ctx.font = "20px serif";
+      ctx.textAlign = "center"; ctx.textBaseline = "middle";
+      cheeses.forEach(c => ctx.fillText("🧀", c.x * tile + tile / 2, c.y * tile + tile / 2));
+    }
+
+    function updateCats(cat) {
+      const dx = mouse.x - cat.x, dy = mouse.y - cat.y;
+      const dist = Math.abs(dx) + Math.abs(dy);
+      if (dist <= 4) {
+        if (Math.abs(dx) > Math.abs(dy)) { cat.dx = Math.sign(dx); cat.dy = 0; }
+        else { cat.dx = 0; cat.dy = Math.sign(dy); }
+      } else if (Math.random() < 0.2) {
+        const dirs = [[1, 0], [-1, 0], [0, 1], [0, -1]];
+        const d = dirs[Math.floor(Math.random() * dirs.length)];
+        cat.dx = d[0]; cat.dy = d[1];
+      }
+      moveEntity(cat);
+    }
+
+    function resetGame() {
+      started = false;
+      gameOver = false; gameOverTimer = 0; victory = false; victoryTimer = 0;
+      if (score > highScore) highScore = score; document.getElementById("highScore").textContent = highScore;
+      score = 0; document.getElementById("score").textContent = score;
+      mouse.x = 1; mouse.y = 1; mouse.dx = 1; mouse.dy = 0;
+      const starts = [[house[0].length - 2, 1], [house[0].length - 2, house.length - 2], [1, house.length - 2], [Math.floor(house[0].length / 2), Math.floor(house.length / 2)]];
+      cats.forEach((c, i) => { c.x = starts[i][0]; c.y = starts[i][1] });
+      powerMode = 0; initItems();
+    }
+
+    function update() {
+      if (!started || paused) return;
+      if (gameOver) { gameOverTimer--; return; }
+      if (victory) { victoryTimer--; return; }
+      frame++; if (frame % Math.floor(14 - speed) !== 0) return;
+      moveEntity(mouse);
+      for (let i = crumbs.length - 1; i >= 0; i--) { if (crumbs[i].x === mouse.x && crumbs[i].y === mouse.y) { crumbs.splice(i, 1); score += 5; playSound("crumb"); } }
+      for (let i = cheeses.length - 1; i >= 0; i--) { if (cheeses[i].x === mouse.x && cheeses[i].y === mouse.y) { cheeses.splice(i, 1); score += 20; playSound("cheese"); } }
+      cats.slice(0, catCount).forEach(c => { updateCats(c); if (c.x === mouse.x && c.y === mouse.y) { gameOver = true; gameOverTimer = 120; playSound("lose"); resetGame(); } });
+      if (powerMode) powerMode--;
+      document.getElementById("score").textContent = score;
+      if (crumbs.length === 0 && cheeses.length === 0) { victory = true; victoryTimer = 180; playSound("victory"); }
+    }
+
+    function loop() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      drawHouse(); drawCrumbs(); drawCheese(); drawCats(); drawMouse();
+      if (!started) { ctx.fillStyle = "rgba(0,0,0,0.6)"; ctx.fillRect(0, 0, canvas.width, canvas.height); ctx.fillStyle = "#f7e7c1"; ctx.font = "32px Courier New"; ctx.textAlign = "center"; ctx.fillText("PRESS START", canvas.width / 2, canvas.height / 2); }
+      if (paused) { ctx.fillStyle = "rgba(0,0,0,0.5)"; ctx.fillRect(0, 0, canvas.width, canvas.height); ctx.fillStyle = "#f7e7c1"; ctx.font = "32px Courier New"; ctx.textAlign = "center"; ctx.fillText("PAUSED", canvas.width / 2, canvas.height / 2); }
+      if (gameOver) { ctx.fillStyle = "rgba(0,0,0,0.6)"; ctx.fillRect(0, 0, canvas.width, canvas.height); ctx.fillStyle = "#f7e7c1"; ctx.font = "32px Courier New"; ctx.textAlign = "center"; ctx.fillText("GAME OVER", canvas.width / 2, canvas.height / 2); }
+      if (victory) { ctx.fillStyle = "rgba(0,0,0,0.6)"; ctx.fillRect(0, 0, canvas.width, canvas.height); ctx.fillStyle = "#f7e7c1"; ctx.font = "32px Courier New"; ctx.textAlign = "center"; ctx.fillText("YOU WIN!", canvas.width / 2, canvas.height / 2); }
+      update(); requestAnimationFrame(loop);
+    }
+
+    window.addEventListener("keydown", e => {
+      if (!started) started = true;
+      if (e.key === "ArrowUp") { mouse.dx = 0; mouse.dy = -1 }
+      if (e.key === "ArrowDown") { mouse.dx = 0; mouse.dy = 1 }
+      if (e.key === "ArrowLeft") { mouse.dx = -1; mouse.dy = 0 }
+      if (e.key === "ArrowRight") { mouse.dx = 1; mouse.dy = 0 }
+    });
+
+    initItems(); loop();
+  </script>
+</body>
+
+</html>
