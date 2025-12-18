@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>American Sign Language</title>
+    <link rel="stylesheet" href="resumestyles.css"> <!-- your CSS file -->
+    <style>
+        /* Inline dropdown toggle script styling for simplicity */
+        .show {
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- ---------- Navigation ---------- -->
+    <nav class="top-nav">
+        <div class="site-title">American Sign Language Information</div>
+        <ul>
+            <li><a href="#">Top of Page</a></li>
+            <li><a href="#viz">ASL and AI</a></li>
+            <li><a href="#ily">Why I Love ASL</a></li>
+        </ul>
+        <button class="menu-button" onclick="toggleDropdown()">Menu</button>
+        <div class="dropdown-menu" id="dropdownMenu">
+            <a href="homepage.html">American Sign Language</a>
+            <a href="resume.html">Resume</a>
+            <a href="chatGame.html">Cat and Mouse Web App</a>
+            <a href="scratch.html">Scratch Page</a>
+        </div>
+    </nav>
+
+    <!-- ---------- Main Content ---------- -->
+    <main>
+        <!-- Hero Section -->
+        <section id="hero">
+            <h1>Discover American Sign Language</h1>
+            <p>American Sign Language (ASL) is a vibrant, expressive language used by millions in the United States and
+                parts of Canada. ASL has its own grammar, culture, and community, providing a rich communication system
+                for Deaf and Hard of Hearing individuals.</p>
+        </section>
+
+        <!-- Tableau Viz -->
+        <section id="viz">
+            <h2>ASL and AI</h2>
+            <p>With the development of AI, ASL has become easier to access and AI has been used to assist in
+                translation, learning, and cultural preservation. Check out the graphic below for more information on how AI has been used for ASL language translation.</p>
+            <div class='tableauPlaceholder' id='viz1766025727201' style='position: relative'><noscript><a href='#'><img
+                            alt='Dashboard 1 '
+                            src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;FA&#47;FAAIRAdvancingSignLanguageAccessibilitywithAI&#47;Dashboard1&#47;1_rss.png'
+                            style='border: none' /></a></noscript><object class='tableauViz' style='display:none;'>
+                    <param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' />
+                    <param name='embed_code_version' value='3' />
+                    <param name='site_root' value='' />
+                    <param name='name' value='FAAIRAdvancingSignLanguageAccessibilitywithAI&#47;Dashboard1' />
+                    <param name='tabs' value='no' />
+                    <param name='toolbar' value='yes' />
+                    <param name='static_image'
+                        value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;FA&#47;FAAIRAdvancingSignLanguageAccessibilitywithAI&#47;Dashboard1&#47;1.png' />
+                    <param name='animate_transition' value='yes' />
+                    <param name='display_static_image' value='yes' />
+                    <param name='display_spinner' value='yes' />
+                    <param name='display_overlay' value='yes' />
+                    <param name='display_count' value='yes' />
+                    <param name='language' value='en-US' />
+                </object></div>
+            <script
+                type='text/javascript'>                    var divElement = document.getElementById('viz1766025727201'); var vizElement = divElement.getElementsByTagName('object')[0]; if (divElement.offsetWidth > 800) { vizElement.style.width = '100%'; vizElement.style.height = (divElement.offsetWidth * 0.75) + 'px'; } else if (divElement.offsetWidth > 500) { vizElement.style.width = '100%'; vizElement.style.height = (divElement.offsetWidth * 0.75) + 'px'; } else { vizElement.style.width = '100%'; vizElement.style.height = '1277px'; } var scriptElement = document.createElement('script'); scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js'; vizElement.parentNode.insertBefore(scriptElement, vizElement);                </script>
+        </section>
+
+        <!-- Education Section -->
+        <section id="education">
+            <h2>Education & Learning</h2>
+            <p>ASL education is available in schools, universities, and online platforms, empowering learners to
+                communicate effectively and connect with the Deaf community.</p>
+            <ul>
+                <li>ASL classes in K-12 and higher education</li>
+                <li>Workshops and community programs</li>
+                <li>Online ASL learning resources ex. Lingvano, ASLDeafined</li>
+            </ul>
+        </section>
+
+        <!-- ILY ASL Section -->
+        <section id="ily">
+            <h2>Why I Love ASL</h2>
+            <img src="https://www.lingvano.com/asl/wp-content/uploads/sites/3/asl_content/content-pages/blog/ILY__combination-1024x359.jpg" alt="ILY Sign" width="700px" height="auto">
+            <p>ASL is such a beautiful language and I think that everyone should learn it. For hearing people, it can be very useful in multiple situations where you either can't talk or can't hear others. Learning ASL also opens doors for you to learn about the deaf committee and its extremely rich culture.</p>
+
+        </section>
+    </main>
+
+    <!-- ---------- Footer ---------- -->
+    <footer>
+        <p>&copy; 2025 ASL in the United States | IS 201 Final Project</p>
+    </footer>
+
+    <!-- ---------- Dropdown Script ---------- -->
+    <script>
+        function toggleDropdown() {
+            document.getElementById("dropdownMenu").classList.toggle("show");
+        }
+
+        // Close the dropdown if clicked outside
+        window.onclick = function (event) {
+            if (!event.target.matches('.menu-button')) {
+                const dropdowns = document.getElementsByClassName("dropdown-menu");
+                for (let i = 0; i < dropdowns.length; i++) {
+                    let openDropdown = dropdowns[i];
+                    if (openDropdown.classList.contains('show')) {
+                        openDropdown.classList.remove('show');
+                    }
+                }
+            }
+        }
+    </script>
+</body>
+
+</html>
